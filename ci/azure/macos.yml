@@ -32,7 +32,7 @@ jobs:
     - script: |
         export PATH=$HOME/miniconda3/bin:$PATH
         source activate pandas-dev
-        # if [ "$(uname)" == "macOS" ]; then sudo /bin/bash -c "sudo xcode-select -s /Applications/Xcode_${XCODE_VERSION}.app/Contents/Developer"
+        # if [ "$(uname)" == "macOS" ]; then sudo /bin/bash -c "sudo xcode-select -s /Applications/Xcode_${XCODE_VERSION}.app/Contents/Developer"; fi
         ci/incremental/build.sh
       displayName: 'Build'
     - script: |
