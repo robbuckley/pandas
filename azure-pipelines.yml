@@ -6,7 +6,7 @@ jobs:
 - template: ci/azure/macos.yml
   parameters:
     name: macOS
-    vmImage: xcode9-macos10.13
+    vmImage: macos10.13
 - template: ci/azure/linux.yml
   parameters:
     name: Linux
