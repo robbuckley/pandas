@@ -32,6 +32,9 @@ matrix:
       - python: 3.5
 
     include:
+    - os: osx
+      osx_image: xcode10.1
+         - JOB="3.7 osx" ENV_FILE="ci/deps/travis-37.yaml" TEST_ARGS="--skip-slow --skip-network"     
     - dist: trusty
       env:
         - JOB="3.7" ENV_FILE="ci/deps/travis-37.yaml" TEST_ARGS="--skip-slow --skip-network"
