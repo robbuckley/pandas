@@ -34,11 +34,12 @@ matrix:
     include:
     - os: osx
       osx_image: xcode10.1
-         - JOB="3.7 osx" ENV_FILE="ci/deps/travis-37.yaml" TEST_ARGS="--skip-slow --skip-network"     
+         - JOB="3.7 osx" ENV_FILE="ci/deps/travis-37.yaml" TEST_ARGS="--skip-slow --skip-network"
+    - os: linux
     - dist: trusty
       env:
         - JOB="3.7" ENV_FILE="ci/deps/travis-37.yaml" TEST_ARGS="--skip-slow --skip-network"
-
+    - os: linux
     - dist: trusty
       env:
         - JOB="2.7, locale, slow, old NumPy" ENV_FILE="ci/deps/travis-27-locale.yaml" LOCALE_OVERRIDE="zh_CN.UTF-8" SLOW=true
@@ -46,6 +47,7 @@ matrix:
         apt:
           packages:
           - language-pack-zh-hans
+    - os: linux
     - dist: trusty
       env:
         - JOB="2.7" ENV_FILE="ci/deps/travis-27.yaml" TEST_ARGS="--skip-slow"
@@ -53,9 +55,11 @@ matrix:
         apt:
           packages:
           - python-gtk2
+    - os: linux
     - dist: trusty
       env:
         - JOB="3.6, lint, coverage" ENV_FILE="ci/deps/travis-36.yaml" TEST_ARGS="--skip-slow --skip-network" PANDAS_TESTING_MODE="deprecate" COVERAGE=true LINT=true
+    - os: linux
     - dist: trusty
       env:
         - JOB="3.7, NumPy dev" ENV_FILE="ci/deps/travis-37-numpydev.yaml" TEST_ARGS="--skip-slow --skip-network -W error" PANDAS_TESTING_MODE="deprecate"
@@ -65,18 +69,22 @@ matrix:
           - xsel
 
     # In allow_failures
+    - os: linux
     - dist: trusty
       env:
         - JOB="3.6, slow" ENV_FILE="ci/deps/travis-36-slow.yaml" SLOW=true
 
     # In allow_failures
+    - os: linux
     - dist: trusty
       env:
         - JOB="3.6, doc" ENV_FILE="ci/deps/travis-36-doc.yaml" DOC=true
     allow_failures:
+      - os: linux
       - dist: trusty
         env:
           - JOB="3.6, slow" ENV_FILE="ci/deps/travis-36-slow.yaml" SLOW=true
+      - os: linux
       - dist: trusty
         env:
           - JOB="3.6, doc" ENV_FILE="ci/deps/travis-36-doc.yaml" DOC=true
