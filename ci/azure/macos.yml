@@ -9,10 +9,16 @@ jobs:
   strategy:
     maxParallel: 11
     matrix:
-      py35_np_120:
+      py35_np_120_xcode9:
         ENV_FILE: ci/deps/azure-macos-35.yaml
         CONDA_PY: "35"
         TEST_ARGS: "--skip-slow --skip-network"
+        RBRB  XCODE_VERSION: "9.4.1"
+      py35_np_120_xcode10:
+        ENV_FILE: ci/deps/azure-macos-35.yaml
+        CONDA_PY: "35"
+        TEST_ARGS: "--skip-slow --skip-network"
+        XCODE_VERSION: "10.1"
 
   steps:
     - script: |
@@ -26,6 +32,7 @@ jobs:
     - script: |
         export PATH=$HOME/miniconda3/bin:$PATH
         source activate pandas-dev
+        if [ "$(uname)" == "macOS" ]; then sudo /bin/bash -c "sudo xcode-select -s /Applications/Xcode_${XCODE_VERSION}.app/Contents/Developer"
         ci/incremental/build.sh
       displayName: 'Build'
     - script: |
