@@ -33,7 +33,7 @@ jobs:
         export PATH=$HOME/miniconda3/bin:$PATH
         source activate pandas-dev
         if [ "$(uname)" == "macOS" ]; then sudo /bin/bash -c "sudo xcode-select -s /Applications/Xcode_${XCODE_VERSION}.app/Contents/Developer"; fi
-        if [ "$(uname)" == "macOS" ]; then sudo /bin/bash -c "sudo xcode-select --print-path; fi
+        if [ "$(uname)" == "macOS" ]; then sudo /bin/bash -c "sudo xcode-select --print-path"; fi
         ci/incremental/build.sh
       displayName: 'Build'
     - script: |
