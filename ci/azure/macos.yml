@@ -13,7 +13,7 @@ jobs:
         ENV_FILE: ci/deps/azure-macos-35.yaml
         CONDA_PY: "35"
         TEST_ARGS: "--skip-slow --skip-network"
-        RBRB  XCODE_VERSION: "9.4.1"
+        XCODE_VERSION: "9.4.1"
       py35_np_120_xcode10:
         ENV_FILE: ci/deps/azure-macos-35.yaml
         CONDA_PY: "35"
@@ -29,7 +29,11 @@ jobs:
         ci/incremental/setup_conda_environment.sh
         echo "Selecting Xcode ${XCODE_VERSION} toolchain"
         sudo xcode-select -s "/Applications/Xcode_${XCODE_VERSION}.app/Contents/Developer"
-        sudo xcode-select --print-path
+        echo "Xcode path = $(sudo xcode-select --print-path)"
+        echo "---- clang ----"
+        clang --version
+        echo "---- gcc ----"
+        gcc --version
       displayName: 'Before Install'
     - script: |
         export PATH=$HOME/miniconda3/bin:$PATH
