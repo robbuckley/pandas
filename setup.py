@@ -428,10 +428,10 @@ else:
 
 
 if is_platform_windows():
-    extra_compile_args = []
+    extra_compile_args = ['-v']
 else:
     # args to ignore warnings
-    extra_compile_args = ['-Wno-unused-function']
+    extra_compile_args = ['-v', '-Wno-unused-function']
 
 
 # enable coverage by building cython files by setting the environment variable
