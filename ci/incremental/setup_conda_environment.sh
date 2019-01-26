@@ -21,6 +21,10 @@ time conda env create -q --file="${ENV_FILE}" || exit 1
 
 set +v
 source activate pandas-dev
+# display local time+zone in the conda env (for debugging)
+echo "[local time/zone]"
+python --version
+python -c "from dateutil import tz; import datetime as dt; print(dt.datetime.now(tz.tzlocal()).strftime('%H:%M:%S %Z=UTC%z'))"
 set -v
 
 # remove any installed pandas package
