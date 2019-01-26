@@ -251,6 +251,8 @@ class TestConfig(object):
                     KeyError,
                     match="No such keys.s.: 'foo'"):
                 self.cf.get_option('foo')
+            for _warn in w:
+                print(w)
             assert len(w) == 1  # should have raised one warning
             assert 'deprecated' in str(w[-1])  # we get the default message
 
